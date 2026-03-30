@@ -1,0 +1,3 @@
+export default function OrderConfirmationPage() {
+  return <div className="p-4">Order Confirmation Page</div>
+}
