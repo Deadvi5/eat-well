@@ -1,5 +1,5 @@
 # Task 02 — TypeScript types and mock data
-
+ 
 ## Goal
 
 Define all TypeScript types and populate a rich mock dataset used throughout the app.
