@@ -2,11 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Redirecting...</title>
     <script>
-      var path = window.location.pathname.replace(/\/$/, '') || '/';
-      var search = window.location.search;
-      window.location.replace('/eat-well/' + (path.startsWith('/eat-well') ? path.slice('/eat-well'.length) : path.slice(1)) + search + window.location.hash);
+      // Redirect to the app root — HashRouter handles routing from there
+      window.location.replace('/eat-well/');
     </script>
   </head>
   <body>
