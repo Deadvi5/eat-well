@@ -27,6 +27,9 @@ interface AppContextValue extends AppState {
   addOrder: (order: Order) => void
   updateOrderStatus: (orderId: string, status: OrderStatus) => void
   updateDishAvailability: (dishId: string, available: boolean) => void
+  addDish: (dish: Dish) => void
+  updateDish: (dish: Dish) => void
+  removeDish: (dishId: string) => void
   updateUserPreferences: (prefs: DietaryTag[], allergies: Allergen[]) => void
 }
 
@@ -93,6 +96,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
     )
   }, [])
 
+  const addDish = useCallback((dish: Dish) => {
+    setDishes((prev) => [...prev, dish])
+  }, [])
+
+  const updateDish = useCallback((dish: Dish) => {
+    setDishes((prev) =>
+      prev.map((d) => (d.id === dish.id ? dish : d))
+    )
+  }, [])
+
+  const removeDish = useCallback((dishId: string) => {
+    setDishes((prev) => prev.filter((d) => d.id !== dishId))
+  }, [])
+
   const updateUserPreferences = useCallback((prefs: DietaryTag[], allergies: Allergen[]) => {
     setCurrentUser((prev) =>
       prev ? { ...prev, dietaryPreferences: prefs, allergies } : null
@@ -111,6 +128,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     addOrder,
     updateOrderStatus,
     updateDishAvailability,
+    addDish,
+    updateDish,
+    removeDish,
     updateUserPreferences,
   }
 

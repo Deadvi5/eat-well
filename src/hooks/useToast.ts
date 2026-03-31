@@ -1,0 +1,11 @@
+import { useContext } from 'react'
+import { ToastContext, type ToastContextValue } from '../context/ToastContext'
+
+export type { ToastVariant } from '../context/ToastContext'
+export type { Toast as ToastItem } from '../context/ToastContext'
+
+export function useToast(): ToastContextValue {
+  const ctx = useContext(ToastContext)
+  if (!ctx) throw new Error('useToast must be used within ToastProvider')
+  return ctx
+}

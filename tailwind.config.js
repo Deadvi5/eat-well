@@ -16,11 +16,19 @@ export default {
           from: { transform: 'translateY(100%)' },
           to: { transform: 'translateY(0)' },
         },
+        'draw-circle': {
+          to: { strokeDashoffset: '0' },
+        },
+        'draw-check': {
+          to: { opacity: '1', transform: 'scale(1)' },
+        },
       },
       animation: {
         'pulse-card': 'pulse-card 150ms ease-in-out',
         'slide-in-right': 'slide-in-right 250ms ease-out',
         'slide-in-up': 'slide-in-up 250ms ease-out',
+        'draw-circle': 'draw-circle 600ms ease-out forwards',
+        'draw-check': 'draw-check 200ms ease-out 600ms forwards',
       },
     },
   },

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
+import { useToast } from '../hooks/useToast'
 import type { Dish, Allergen } from '../types'
 
 interface DishCardProps {
@@ -29,6 +30,7 @@ const DIETARY_LABELS: Record<string, string> = {
 export default function DishCard({ dish, userAllergies, dimmed }: DishCardProps) {
   const [pulse, setPulse] = useState(false)
   const { items, addItem, removeItem } = useCart()
+  const { showToast } = useToast()
 
   const isInCart = items.some((item) => item.dish.id === dish.id)
   const sameCourseItem = items.find(
@@ -42,6 +44,9 @@ export default function DishCard({ dish, userAllergies, dimmed }: DishCardProps)
 
   function handleAdd() {
     if (!dish.available) return
+    if (sameCourseItem) {
+      showToast(`Piatto sostituito: ${sameCourseItem.dish.name}`, 'info')
+    }
     addItem(dish)
     setPulse(true)
     setTimeout(() => setPulse(false), 150)
