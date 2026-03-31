@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
+import { useCart } from '../context/CartContext'
+import CartDrawer from './CartDrawer'
 import type { UserRole } from '../types'
 
 interface NavItem {
@@ -36,6 +39,8 @@ function getVisibleItems(role: UserRole) {
 
 export default function Layout() {
   const { currentUser, logout } = useApp()
+  const { itemCount } = useCart()
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const navigate = useNavigate()
 
   // ProtectedRoute handles redirects, but guard for type safety
@@ -87,12 +92,28 @@ export default function Layout() {
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar — desktop only */}
         <nav className="hidden md:flex flex-col w-[220px] bg-white border-r border-gray-200 p-3 gap-1 shrink-0">
-          {items.map((item) => (
-            <NavLink key={item.to} to={item.to} className={linkClass}>
-              <span className="text-lg">{item.icon}</span>
-              <span>{item.label}</span>
-            </NavLink>
-          ))}
+          {items.map((item) =>
+            item.to === '/order/new' ? (
+              <button
+                key={item.to}
+                onClick={() => setDrawerOpen(true)}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-50 text-left relative"
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span>{item.label}</span>
+                {itemCount > 0 && (
+                  <span className="absolute top-1 left-7 w-5 h-5 flex items-center justify-center bg-red-500 text-white text-[10px] font-bold rounded-full">
+                    {itemCount}
+                  </span>
+                )}
+              </button>
+            ) : (
+              <NavLink key={item.to} to={item.to} className={linkClass}>
+                <span className="text-lg">{item.icon}</span>
+                <span>{item.label}</span>
+              </NavLink>
+            )
+          )}
         </nav>
 
         {/* Main content */}
@@ -103,13 +124,32 @@ export default function Layout() {
 
       {/* Bottom nav — mobile only */}
       <nav className="md:hidden flex justify-around items-center bg-white border-t border-gray-200 py-2 shrink-0">
-        {items.map((item) => (
-          <NavLink key={item.to} to={item.to} className={mobileLinkClass}>
-            <span className="text-xl">{item.icon}</span>
-            <span>{item.label}</span>
-          </NavLink>
-        ))}
+        {items.map((item) =>
+          item.to === '/order/new' ? (
+            <button
+              key={item.to}
+              onClick={() => setDrawerOpen(true)}
+              className="flex flex-col items-center gap-0.5 text-xs text-gray-500 relative"
+            >
+              <span className="text-xl">{item.icon}</span>
+              <span>{item.label}</span>
+              {itemCount > 0 && (
+                <span className="absolute -top-1 right-0 w-5 h-5 flex items-center justify-center bg-red-500 text-white text-[10px] font-bold rounded-full">
+                  {itemCount}
+                </span>
+              )}
+            </button>
+          ) : (
+            <NavLink key={item.to} to={item.to} className={mobileLinkClass}>
+              <span className="text-xl">{item.icon}</span>
+              <span>{item.label}</span>
+            </NavLink>
+          )
+        )}
       </nav>
+
+      {/* Cart drawer */}
+      <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </div>
   )
 }
