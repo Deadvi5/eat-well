@@ -3,6 +3,8 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import { useCart } from '../context/CartContext'
 import CartDrawer from './CartDrawer'
+import InstallBanner from './InstallBanner'
+import OnboardingModal from './OnboardingModal'
 import type { UserRole } from '../types'
 
 interface NavItem {
@@ -89,6 +91,8 @@ export default function Layout() {
         </div>
       </header>
 
+      <InstallBanner />
+
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar — desktop only */}
         <nav className="hidden md:flex flex-col w-[220px] bg-white border-r border-gray-200 p-3 gap-1 shrink-0">
@@ -150,6 +154,9 @@ export default function Layout() {
 
       {/* Cart drawer */}
       <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+
+      {/* Onboarding */}
+      <OnboardingModal />
     </div>
   )
 }

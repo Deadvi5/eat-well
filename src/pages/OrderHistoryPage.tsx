@@ -156,16 +156,16 @@ export default function OrderHistoryPage() {
 
       {/* Empty filtered state */}
       {filteredOrders.length === 0 ? (
-        <div className="flex flex-col items-center py-16 gap-3">
-          <span className="text-4xl">📋</span>
-          <p className="text-gray-700 font-medium">Nessun ordine trovato</p>
-          <p className="text-sm text-gray-400">Cambia i filtri o ordina il tuo primo pasto!</p>
-          <Link
-            to="/menu"
-            className="text-sm text-[#1E6FBF] font-medium hover:underline"
+        <div className="flex flex-col items-center justify-center py-16 text-center gap-2">
+          <span className="text-5xl">📋</span>
+          <h3 className="mt-2 text-lg font-medium text-gray-800">Nessun ordine trovato</h3>
+          <p className="text-gray-500 text-sm">Prova a cambiare i filtri.</p>
+          <button
+            onClick={() => { setStatusFilter('all'); setMealFilter('all') }}
+            className="mt-2 text-[#1E6FBF] hover:underline text-sm"
           >
-            Vai al menu →
-          </Link>
+            Reimposta filtri
+          </button>
         </div>
       ) : (
         <div className="space-y-3">

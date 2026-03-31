@@ -95,9 +95,9 @@ export default function OrderNewPage() {
     <div className="max-w-2xl mx-auto">
       {/* Loading overlay */}
       {loading && (
-        <div className="fixed inset-0 bg-white/80 flex flex-col items-center justify-center z-50 gap-3">
-          <div className="w-10 h-10 border-4 border-[#1E6FBF] border-t-transparent rounded-full animate-spin" />
-          <p className="text-sm text-gray-600">Elaborazione pagamento...</p>
+        <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center z-50 gap-3">
+          <div className="w-12 h-12 border-4 border-[#1E6FBF] border-t-transparent rounded-full animate-spin" />
+          <p className="mt-4 text-sm text-gray-600">Elaborazione pagamento...</p>
         </div>
       )}
 

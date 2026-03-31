@@ -1,9 +1,10 @@
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import { useCart } from '../context/CartContext'
 import MealTimeTabs from '../components/MealTimeTabs'
 import FilterPanel from '../components/FilterPanel'
 import DishCard from '../components/DishCard'
+import DishCardSkeleton from '../components/DishCardSkeleton'
 import type { MealTime, DietaryTag, MealCourse, Dish } from '../types'
 
 const COURSE_ORDER: MealCourse[] = ['primo', 'secondo', 'contorno', 'dessert', 'bevanda']
@@ -57,7 +58,15 @@ export default function MenuPage() {
   const [selectedMealTime, setSelectedMealTime] = useState<MealTime>(cart.selectedMealTime)
   const [activeFilters, setActiveFilters] = useState<DietaryTag[]>([])
   const [confirmDialog, setConfirmDialog] = useState<{ date?: string; mealTime?: MealTime } | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
   const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Simulate initial data load
+  useEffect(() => {
+    setIsLoading(true)
+    const t = setTimeout(() => setIsLoading(false), 800)
+    return () => clearTimeout(t)
+  }, [])
 
   const userAllergies = currentUser?.allergies ?? []
 
@@ -77,6 +86,10 @@ export default function MenuPage() {
     }
     return groups
   }, [filteredDishes])
+
+  // Check if all visible dishes are dimmed (filters too restrictive)
+  const allDimmed = activeFilters.length > 0 &&
+    filteredDishes.every((d) => !activeFilters.every((f) => d.dietaryTags.includes(f)))
 
   function isDimmed(dish: Dish): boolean {
     if (activeFilters.length === 0) return false
@@ -123,7 +136,10 @@ export default function MenuPage() {
     setConfirmDialog(null)
   }
 
-  // Build dialog message
+  function clearFilters() {
+    setActiveFilters([])
+  }
+
   const dialogMessage = confirmDialog
     ? `Hai già piatti nel carrello per ${
         confirmDialog.date
@@ -135,7 +151,7 @@ export default function MenuPage() {
     : ''
 
   return (
-    <div className="max-w-3xl mx-auto space-y-4">
+    <div className="max-w-4xl mx-auto space-y-4">
       {/* Date selector */}
       <div className="flex items-center gap-1">
         <button
@@ -186,10 +202,28 @@ export default function MenuPage() {
         </div>
       )}
 
-      {/* Dish grid grouped by course */}
-      {filteredDishes.length === 0 ? (
+      {/* Skeleton loading */}
+      {isLoading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <DishCardSkeleton key={i} />
+          ))}
+        </div>
+      ) : filteredDishes.length === 0 ? (
         <div className="text-center text-gray-400 py-12">
           Nessun piatto disponibile per questo giorno e pasto.
+        </div>
+      ) : allDimmed ? (
+        /* All dishes dimmed — filter too restrictive */
+        <div className="flex flex-col items-center justify-center py-16 text-center">
+          <span className="text-5xl">🔍</span>
+          <h3 className="mt-4 text-lg font-medium text-gray-800">Nessun piatto corrisponde ai filtri</h3>
+          <p className="mt-2 text-gray-500 max-w-xs">
+            Prova a rimuovere qualche filtro per vedere più opzioni.
+          </p>
+          <button onClick={clearFilters} className="mt-4 text-[#1E6FBF] hover:underline text-sm">
+            Rimuovi filtri
+          </button>
         </div>
       ) : (
         <div className="space-y-6 pb-4">
@@ -201,7 +235,7 @@ export default function MenuPage() {
                 <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 border-b border-gray-100 pb-1">
                   {COURSE_LABELS[course]}
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {courseDishes.map((dish) => (
                     <DishCard
                       key={dish.id}
