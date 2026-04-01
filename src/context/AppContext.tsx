@@ -50,9 +50,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return null
   })
 
-  const [orders, setOrders] = useState<Order[]>(() =>
-    loadFromStorage<Order[]>('orders', mockOrders)
-  )
+  const [orders, setOrders] = useState<Order[]>(() => {
+    const stored = loadFromStorage<Order[] | null>('orders', null)
+    if (!stored) return mockOrders
+    // Merge: keep user-created orders from storage + fresh mock orders (whose dates are dynamic)
+    const mockIds = new Set(mockOrders.map((o) => o.id))
+    const userOrders = stored.filter((o) => !mockIds.has(o.id))
+    return [...mockOrders, ...userOrders]
+  })
 
   const [dishes, setDishes] = useState<Dish[]>(() => [...mockDishes])
 
