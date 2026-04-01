@@ -60,6 +60,7 @@ export interface TimeSlot {
   id: string
   time: string
   availableSeats: number
+  mealTime: MealTime
 }
 
 export interface CartItem {

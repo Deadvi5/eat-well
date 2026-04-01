@@ -202,7 +202,7 @@ export default function OrderNewPage() {
             <div>
               <h3 className="text-sm font-semibold text-gray-700 mb-3">Fascia oraria</h3>
               <div className="flex flex-wrap gap-2">
-                {timeSlots.map((ts) => {
+                {timeSlots.filter((ts) => ts.mealTime === cart.selectedMealTime).map((ts) => {
                   const isFull = ts.availableSeats === 0
                   const isSelected = selectedSlot === ts.id
                   return (

@@ -437,10 +437,23 @@ export const pickupPoints: PickupPoint[] = [
 // ── Time Slots ─────────────────────────────────────────
 
 export const timeSlots: TimeSlot[] = [
-  { id: 't1', time: '12:00', availableSeats: 8 },
-  { id: 't2', time: '12:30', availableSeats: 12 },
-  { id: 't3', time: '13:00', availableSeats: 5 },
-  { id: 't4', time: '13:30', availableSeats: 15 },
+  // Colazione
+  { id: 't-col-1', time: '07:30', availableSeats: 10, mealTime: 'colazione' },
+  { id: 't-col-2', time: '08:00', availableSeats: 12, mealTime: 'colazione' },
+  { id: 't-col-3', time: '08:30', availableSeats: 8, mealTime: 'colazione' },
+  // Spuntino
+  { id: 't-spu-1', time: '10:00', availableSeats: 10, mealTime: 'spuntino' },
+  { id: 't-spu-2', time: '10:30', availableSeats: 15, mealTime: 'spuntino' },
+  // Pranzo
+  { id: 't-pra-1', time: '12:00', availableSeats: 8, mealTime: 'pranzo' },
+  { id: 't-pra-2', time: '12:30', availableSeats: 12, mealTime: 'pranzo' },
+  { id: 't-pra-3', time: '13:00', availableSeats: 5, mealTime: 'pranzo' },
+  { id: 't-pra-4', time: '13:30', availableSeats: 15, mealTime: 'pranzo' },
+  // Cena
+  { id: 't-cen-1', time: '19:00', availableSeats: 10, mealTime: 'cena' },
+  { id: 't-cen-2', time: '19:30', availableSeats: 12, mealTime: 'cena' },
+  { id: 't-cen-3', time: '20:00', availableSeats: 8, mealTime: 'cena' },
+  { id: 't-cen-4', time: '20:30', availableSeats: 15, mealTime: 'cena' },
 ]
 
 // ── Historic Orders (for user u1) ─────────────────────
@@ -474,7 +487,7 @@ export const orders: Order[] = [
     totalPrice: 10.0,
     status: 'collected',
     pickupPointId: 'p1',
-    timeSlotId: 't2',
+    timeSlotId: 't-pra-2',
     paymentMethod: 'wallet',
     qrCode: 'ORD-001-QR',
     createdAt: daysAgoISO(3),
@@ -493,7 +506,7 @@ export const orders: Order[] = [
     totalPrice: 12.8,
     status: 'collected',
     pickupPointId: 'p1',
-    timeSlotId: 't1',
+    timeSlotId: 't-pra-1',
     paymentMethod: 'wallet',
     qrCode: 'ORD-002-QR',
     createdAt: daysAgoISO(1),
@@ -511,7 +524,7 @@ export const orders: Order[] = [
     totalPrice: 6.0,
     status: 'confirmed',
     pickupPointId: 'p2',
-    timeSlotId: 't2',
+    timeSlotId: 't-pra-2',
     paymentMethod: 'card',
     qrCode: 'ORD-003-QR',
     createdAt: new Date().toISOString(),
@@ -529,7 +542,7 @@ export const orders: Order[] = [
     totalPrice: 9.0,
     status: 'ready',
     pickupPointId: 'p3',
-    timeSlotId: 't3',
+    timeSlotId: 't-pra-3',
     paymentMethod: 'payroll',
     qrCode: 'ORD-004-QR',
     createdAt: new Date().toISOString(),
@@ -549,7 +562,7 @@ export const orders: Order[] = [
     totalPrice: 12.0,
     status: 'pending',
     pickupPointId: 'p1',
-    timeSlotId: 't4',
+    timeSlotId: 't-pra-4',
     paymentMethod: 'wallet',
     qrCode: 'ORD-005-QR',
     createdAt: new Date().toISOString(),
