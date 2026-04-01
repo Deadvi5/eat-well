@@ -11,7 +11,7 @@ export type Allergen =
 export type MealCourse =
   | 'primo' | 'secondo' | 'contorno' | 'dessert' | 'bevanda'
 
-export type MealTime = 'colazione' | 'spuntino' | 'pranzo'
+export type MealTime = 'colazione' | 'spuntino' | 'pranzo' | 'cena'
 
 export type OrderStatus =
   | 'pending' | 'confirmed' | 'ready' | 'collected' | 'cancelled'

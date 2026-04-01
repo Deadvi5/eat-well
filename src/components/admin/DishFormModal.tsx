@@ -19,6 +19,7 @@ const MEAL_OPTIONS: { value: MealTime; label: string }[] = [
   { value: 'colazione', label: 'Colazione' },
   { value: 'spuntino', label: 'Spuntino' },
   { value: 'pranzo', label: 'Pranzo' },
+  { value: 'cena', label: 'Cena' },
 ]
 
 const DIETARY_OPTIONS: { value: DietaryTag; label: string }[] = [

@@ -47,6 +47,7 @@ const MEAL_TIME_LABELS: Record<MealTime, string> = {
   colazione: 'Colazione',
   spuntino: 'Spuntino',
   pranzo: 'Pranzo',
+  cena: 'Cena',
 }
 
 export default function MenuPage() {

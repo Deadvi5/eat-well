@@ -24,10 +24,11 @@ const MEAL_TIME_LABELS: Record<MealTime, string> = {
   colazione: 'Colazione',
   spuntino: 'Spuntino',
   pranzo: 'Pranzo',
+  cena: 'Cena',
 }
 
 const COURSE_ORDER: MealCourse[] = ['primo', 'secondo', 'contorno', 'dessert', 'bevanda']
-const MEAL_ORDER: MealTime[] = ['colazione', 'spuntino', 'pranzo']
+const MEAL_ORDER: MealTime[] = ['colazione', 'spuntino', 'pranzo', 'cena']
 
 export default function AdminMenuPage() {
   const { dishes, dailyMenus, updateDishAvailability, addDish, updateDish, removeDish } = useApp()

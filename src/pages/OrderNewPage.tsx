@@ -18,6 +18,7 @@ const MEAL_TIME_LABELS: Record<string, string> = {
   colazione: 'Colazione',
   spuntino: 'Spuntino',
   pranzo: 'Pranzo',
+  cena: 'Cena',
 }
 
 const DAY_NAMES = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato']

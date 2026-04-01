@@ -18,6 +18,7 @@ const MEAL_TIME_LABELS: Record<MealTime, string> = {
   colazione: 'Colazione',
   spuntino: 'Spuntino',
   pranzo: 'Pranzo',
+  cena: 'Cena',
 }
 
 const COURSE_LABELS: Record<MealCourse, string> = {
@@ -151,6 +152,7 @@ export default function OrderHistoryPage() {
           <option value="colazione">Colazione</option>
           <option value="spuntino">Spuntino</option>
           <option value="pranzo">Pranzo</option>
+          <option value="cena">Cena</option>
         </select>
       </div>
 

@@ -9,6 +9,7 @@ const TABS: { value: MealTime; label: string }[] = [
   { value: 'colazione', label: 'Colazione' },
   { value: 'spuntino', label: 'Spuntino' },
   { value: 'pranzo', label: 'Pranzo' },
+  { value: 'cena', label: 'Cena' },
 ]
 
 export default function MealTimeTabs({ selected, onChange }: MealTimeTabsProps) {

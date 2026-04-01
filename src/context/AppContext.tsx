@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from 'react'
 import type {
   User,
   Order,
@@ -10,7 +10,7 @@ import type {
   DietaryTag,
   Allergen,
 } from '../types'
-import { users, dishes as mockDishes, dailyMenus, pickupPoints, timeSlots, orders as mockOrders } from '../data/mockData'
+import { users, dishes as mockDishes, pickupPoints, timeSlots, orders as mockOrders } from '../data/mockData'
 
 interface AppState {
   currentUser: User | null
@@ -55,7 +55,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
   )
 
   const [dishes, setDishes] = useState<Dish[]>(() => [...mockDishes])
-  const [menus] = useState<DailyMenu[]>(() => [...dailyMenus])
+
+  // Derive dailyMenus from current dishes so admin additions are reflected
+  const menus = useMemo<DailyMenu[]>(() => {
+    const today = new Date()
+    const unavailableByDay: number[][] = [
+      [2, 9, 17], [4, 11, 20], [1, 13, 18],
+      [6, 8, 15], [3, 12, 19], [5, 10, 16], [7, 14, 21],
+    ]
+    const result: DailyMenu[] = []
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today)
+      date.setDate(today.getDate() + i)
+      const unavailableIndices = unavailableByDay[i]
+      const dayDishes = dishes.map((dish, idx) => ({
+        ...dish,
+        available: dish.available && !unavailableIndices.includes(idx + 1),
+      }))
+      result.push({ date: date.toISOString().split('T')[0], dishes: dayDishes })
+    }
+    return result
+  }, [dishes])
 
   // Persist currentUser id
   useEffect(() => {
