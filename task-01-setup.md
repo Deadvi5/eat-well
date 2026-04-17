@@ -98,7 +98,7 @@ All placeholder pages just render a `<div>` with the page name for now.
 Create `src/components/Layout.tsx` used as the wrapper for all authenticated routes. It must include:
 
 **Header** (top bar, full width):
-- Left: hospital icon (🏥) + text "Mensa Ospedale San Marco" in primary blue
+- Left: hospital icon (🏥) + text "Mensa Ospedale Sant'Orsola" in primary blue
 - Right: user name + role badge + logout button
 - Height: 56px, white background, bottom border
 

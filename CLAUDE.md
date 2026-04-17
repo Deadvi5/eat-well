@@ -25,7 +25,7 @@ A PWA for a hospital canteen that lets employees and patients browse the daily m
 
 ## Brand
 
-- Name: "Mensa Ospedale San Marco"
+- Name: "Mensa Ospedale Sant'Orsola"
 - Primary color: #1E6FBF (blue)
 - Accent color: #2E9E6B (green)
 - Background: #ffffff

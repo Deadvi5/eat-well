@@ -49,8 +49,8 @@ VitePWA({
   registerType: 'autoUpdate',
   includeAssets: ['icon.svg', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'],
   manifest: {
-    name: 'Mensa Ospedale San Marco',
-    short_name: 'MensaSanMarco',
+    name: "Mensa Ospedale Sant'Orsola",
+    short_name: 'MensaSantOrsola',
     description: 'Prenota i pasti della mensa ospedaliera',
     theme_color: '#1E6FBF',
     background_color: '#ffffff',
@@ -90,7 +90,7 @@ VitePWA({
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offline – Mensa San Marco</title>
+  <title>Offline – Mensa Sant'Orsola</title>
   <style>
     body {
       font-family: sans-serif; display: flex; flex-direction: column;

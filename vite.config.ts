@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Mensa Ospedale San Marco',
-        short_name: 'MensaSanMarco',
+        name: "Mensa Ospedale Sant'Orsola",
+        short_name: 'MensaSantOrsola',
         description: 'Prenota i pasti della mensa ospedaliera',
         theme_color: '#1E6FBF',
         background_color: '#ffffff',

@@ -74,7 +74,7 @@ export default function Layout() {
         <div className="flex items-center gap-2">
           <span className="text-xl">🏥</span>
           <span className="text-[#1E6FBF] font-semibold text-sm md:text-base">
-            Mensa Ospedale San Marco
+            Mensa Ospedale Sant'Orsola
           </span>
         </div>
         <div className="flex items-center gap-2">

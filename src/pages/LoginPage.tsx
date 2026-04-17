@@ -45,7 +45,7 @@ export default function LoginPage() {
       <div className="text-center mb-8">
         <span className="text-5xl">🏥</span>
         <h1 className="text-2xl font-bold text-[#1E6FBF] mt-3">
-          Mensa Ospedale San Marco
+          Mensa Ospedale Sant'Orsola
         </h1>
         <p className="text-gray-500 mt-2">
           Seleziona il tuo profilo per accedere

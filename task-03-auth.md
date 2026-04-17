@@ -40,7 +40,7 @@ Wrap `<App />` in `<AppProvider>` in `main.tsx`.
 
 Full-screen centered layout. Show:
 
-- Hospital logo emoji 🏥 + app name "Mensa Ospedale San Marco" as heading
+- Hospital logo emoji 🏥 + app name "Mensa Ospedale Sant'Orsola" as heading
 - Subtitle: "Seleziona il tuo profilo per accedere"
 
 Three large clickable cards, one per mock user:
