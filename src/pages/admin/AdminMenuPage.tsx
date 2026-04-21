@@ -239,7 +239,7 @@ export default function AdminMenuPage() {
                       <div className="flex justify-center gap-0.5">
                         {dish.dietaryTags.slice(0, 3).map((t) => (
                           <span key={t} className="text-xs bg-green-50 text-green-600 px-1.5 py-0.5 rounded">
-                            {t === 'vegetarian' ? '🌱' : t === 'vegan' ? '🌿' : t === 'gluten_free' ? '🌾' : t === 'lactose_free' ? '🥛' : t === 'diabetic' ? '🩸' : '🧂'}
+                            {t === 'vegetarian' ? '🌱' : t === 'vegan' ? '🌿' : t === 'gluten_free' ? '🌾' : t === 'lactose_free' ? '🥛' : '🧂'}
                           </span>
                         ))}
                       </div>

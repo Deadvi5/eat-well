@@ -27,7 +27,6 @@ const DIETARY_OPTIONS: { value: DietaryTag; label: string }[] = [
   { value: 'vegan', label: '🌿 Vegano' },
   { value: 'gluten_free', label: '🌾 Senza glutine' },
   { value: 'lactose_free', label: '🥛 Senza lattosio' },
-  { value: 'diabetic', label: '🩸 Diabetico' },
   { value: 'low_sodium', label: '🧂 Basso sodio' },
 ]
 

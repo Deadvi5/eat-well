@@ -23,7 +23,6 @@ const DIETARY_LABELS: Record<string, string> = {
   vegan: '🌿 Vegano',
   gluten_free: '🌾 Senza glutine',
   lactose_free: '🥛 Senza lattosio',
-  diabetic: '🩸 Diabetico',
   low_sodium: '🧂 Basso sodio',
 }
 

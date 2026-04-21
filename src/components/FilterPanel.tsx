@@ -11,7 +11,6 @@ const DIETARY_OPTIONS: { value: DietaryTag; label: string; emoji: string }[] = [
   { value: 'vegan', label: 'Vegano', emoji: '🌿' },
   { value: 'gluten_free', label: 'Senza glutine', emoji: '🌾' },
   { value: 'lactose_free', label: 'Senza lattosio', emoji: '🥛' },
-  { value: 'diabetic', label: 'Diabetico', emoji: '🩸' },
   { value: 'low_sodium', label: 'Basso sodio', emoji: '🧂' },
 ]
 

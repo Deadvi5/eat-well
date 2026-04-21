@@ -2,7 +2,7 @@ export type UserRole = 'employee' | 'patient' | 'admin'
 
 export type DietaryTag =
   | 'vegetarian' | 'vegan' | 'gluten_free'
-  | 'lactose_free' | 'diabetic' | 'low_sodium'
+  | 'lactose_free' | 'low_sodium'
 
 export type Allergen =
   | 'gluten' | 'dairy' | 'nuts'
